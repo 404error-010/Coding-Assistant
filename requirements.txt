@@ -21,4 +21,6 @@ youtube_transcript_api
 pytube
 unstructured
 gradio
+wikipedia
+
 langchain_astradb
