@@ -14,7 +14,20 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Push to hub
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Pull latest from Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://sakthi05:$HF_TOKEN@huggingface.co/spaces/sakthi05/Search_Engine_LLM main
+        run: |
+          git pull https://sakthi05:$HF_TOKEN@huggingface.co/spaces/sakthi05/Search_Engine_LLM main --rebase || true
+
+      - name: Push to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git push https://sakthi05:$HF_TOKEN@huggingface.co/spaces/sakthi05/Search_Engine_LLM main
