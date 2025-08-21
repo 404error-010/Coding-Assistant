@@ -22,5 +22,7 @@ pytube
 unstructured
 gradio
 wikipedia
+duckduckgo-search
 
 langchain_astradb
+
